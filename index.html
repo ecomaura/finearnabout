@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Finearn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Color Palette */
+            --deep-navy: #0A1128;
+            --prof-blue: #1C3F60;
+            --emerald: #059669;
+            --emerald-light: #10B981;
+            --soft-gold: #D4AF37;
+            --off-white: #F8FAFC;
+            --white: #FFFFFF;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+            
+            /* Typography */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+            --font-label: 'Inter', sans-serif;
+            
+            /* Spacing & Layout */
+            --section-padding: 100px 24px;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background-color: var(--off-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .label {
+            font-family: var(--font-label);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        section {
+            padding: var(--section-padding);
+            position: relative;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        /* Background Patterns */
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(28, 63, 96, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(28, 63, 96, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .chart-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><path d="M0,100 Q200,50 400,150 T800,100 T1200,180" fill="none" stroke="rgba(212,175,55,0.05)" stroke-width="4"/></svg>') no-repeat center/cover;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* 1. Hero Section */
+        .hero {
+            background: var(--deep-navy);
+            color: var(--white);
+            text-align: center;
+            padding: 160px 24px 120px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--emerald), var(--soft-gold));
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+        .hero p {
+            font-size: clamp(1.125rem, 2vw, 1.25rem);
+            max-width: 800px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 300;
+        }
+        .hero .label {
+            color: var(--soft-gold);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        /* 2. Our Story (Timeline) */
+        .story {
+            background-color: var(--white);
+        }
+        .story h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--deep-navy);
+            margin-bottom: 60px;
+        }
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--prof-blue);
+            opacity: 0.2;
+        }
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            margin-bottom: 40px;
+        }
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 50%;
+        }
+        .timeline-content {
+            width: 85%;
+            padding: 24px;
+            background: var(--off-white);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            position: relative;
+            border: 1px solid rgba(28, 63, 96, 0.05);
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            background: var(--white);
+            border: 4px solid var(--emerald);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-content h3 {
+            color: var(--prof-blue);
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        /* 3. What We Stand For */
+        .philosophy {
+            background-color: var(--off-white);
+        }
+        .philosophy-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .philosophy-header h2 {
+            font-size: 2.5rem;
+            color: var(--deep-navy);
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            border-bottom-color: var(--emerald);
+        }
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(5, 150, 105, 0.1);
+            color: var(--emerald);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: var(--font-heading);
+        }
+        .card h3 {
+            font-size: 1.25rem;
+            color: var(--deep-navy);
+            margin-bottom: 12px;
+        }
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* 4 & 5. Vision and Mission (Editorial) */
+        .editorial-split {
+            display: flex;
+            flex-direction: column;
+        }
+        .editorial-block {
+            padding: var(--section-padding);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 50vh;
+        }
+        .vision {
+            background: var(--prof-blue);
+            color: var(--white);
+            position: relative;
+        }
+        .mission {
+            background: var(--deep-navy);
+            color: var(--off-white);
+            position: relative;
+        }
+        .editorial-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+        .editorial-content .label {
+            color: var(--soft-gold);
+            margin-bottom: 24px;
+            display: block;
+        }
+        .editorial-content h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 500;
+            line-height: 1.3;
+        }
+        .quote-mark {
+            position: absolute;
+            font-size: 10rem;
+            font-family: serif;
+            color: rgba(255,255,255,0.03);
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* 6. Our Approach */
+        .approach {
+            background-color: var(--white);
+            text-align: center;
+        }
+        .approach h2 {
+            font-size: 2.5rem;
+            color: var(--deep-navy);
+            margin-bottom: 16px;
+        }
+        .approach > p {
+            max-width: 700px;
+            margin: 0 auto 60px;
+            color: var(--text-muted);
+        }
+        .journey-steps {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .step {
+            flex: 1;
+            min-width: 150px;
+            padding: 20px;
+            position: relative;
+        }
+        .step-circle {
+            width: 80px;
+            height: 80px;
+            background: var(--off-white);
+            border: 2px solid var(--prof-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--prof-blue);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        .step:hover .step-circle {
+            background: var(--prof-blue);
+            color: var(--white);
+            border-color: var(--prof-blue);
+        }
+        .step h4 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+        .journey-connector {
+            flex: 0 0 auto;
+            color: var(--emerald);
+            font-size: 1.5rem;
+        }
+
+        /* 7. Our Journey Today */
+        .journey-today {
+            background: var(--off-white);
+        }
+        .journey-today-content {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 80px 40px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.02);
+            border-top: 4px solid var(--prof-blue);
+        }
+        .journey-today-content h2 {
+            font-size: 2.5rem;
+            color: var(--deep-navy);
+            margin-bottom: 24px;
+        }
+        .journey-today-content p {
+            font-size: 1.125rem;
+            color: var(--text-body);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* 8. Education Disclaimer */
+        .disclaimer {
+            background-color: var(--deep-navy);
+            padding: 40px 24px;
+            text-align: center;
+        }
+        .disclaimer-box {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 24px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.02);
+        }
+        .disclaimer p {
+            font-family: var(--font-label);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 60px 20px;
+            }
+            .timeline::before { left: 24px; }
+            .timeline-item { 
+                justify-content: flex-end; 
+                padding-right: 0; 
+                padding-left: 60px; 
+            }
+            .timeline-item:nth-child(even) { 
+                justify-content: flex-end; 
+                padding-left: 60px; 
+            }
+            .timeline-item::after { left: 24px; }
+            .timeline-content { width: 100%; }
+            
+            .journey-steps { flex-direction: column; }
+            .journey-connector { transform: rotate(90deg); margin: 10px 0; }
+            
+            .editorial-block { min-height: auto; padding: 80px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Hero Section -->
+    <section class="hero grid-bg" id="about-hero">
+        <div class="container reveal">
+            <span class="label">About Finearn</span>
+            <h1>Empowering People Through Better Market Education</h1>
+            <p>Finearn is a dedicated stock-market education platform focused on helping individuals master trading and investing through structured education, logical analysis, and practical learning.</p>
+        </div>
+    </section>
+
+    <!-- 2. Our Story -->
+    <section class="story" id="our-story">
+        <div class="container">
+            <h2 class="reveal">Our Story</h2>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-content">
+                        <h3>The Beginning</h3>
+                        <p>Started by two friends who embarked on their own journey as traders and investors. Like many, they experienced firsthand the confusion, noise, and steep learning curve of the financial markets.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-content">
+                        <h3>Sharing the Knowledge</h3>
+                        <p>Driven by their own experiences and breakthroughs, they began sharing their insights and systematic strategies with close friends, realizing a massive gap in genuine market education.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-content">
+                        <h3>Establishing the Institute (2015)</h3>
+                        <p>To institutionalize their teaching approach, they established a physical share-market institute in 2015, building a local community of informed traders.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-content">
+                        <h3>Impacting 10,000+ Lives</h3>
+                        <p>Over the years, the physical institute grew tremendously, successfully training and guiding over 10,000 individuals towards financial literacy and market independence.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-content">
+                        <h3>The Digital Evolution</h3>
+                        <p>Recognizing the need to scale their impact, Finearn expanded into online education, transforming into a digital platform to make high-quality market learning accessible to everyone across India.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. What We Stand For -->
+    <section class="philosophy grid-bg" id="philosophy">
+        <div class="container">
+            <div class="philosophy-header reveal">
+                <span class="label" style="color: var(--emerald);">Our Philosophy</span>
+                <h2>What We Stand For</h2>
+            </div>
+            <div class="grid-4">
+                <div class="card reveal delay-1">
+                    <div class="card-icon">1</div>
+                    <h3>Knowledge Over Tips</h3>
+                    <p>We reject the culture of "stock tips." We believe in equipping you with the fundamental and technical knowledge required to make your own informed decisions.</p>
+                </div>
+                <div class="card reveal delay-2">
+                    <div class="card-icon">2</div>
+                    <h3>Practical Learning</h3>
+                    <p>Theory alone won't survive the live market. Our curriculum is deeply rooted in practical application, real-chart analysis, and live-market scenarios.</p>
+                </div>
+                <div class="card reveal delay-3">
+                    <div class="card-icon">3</div>
+                    <h3>Disciplined Approach</h3>
+                    <p>Success in the market is 80% psychology and 20% strategy. We emphasize mental fortitude, emotional control, and strict trading discipline.</p>
+                </div>
+                <div class="card reveal delay-3">
+                    <div class="card-icon">4</div>
+                    <h3>Risk Awareness</h3>
+                    <p>Capital protection comes before capital appreciation. We instill a robust understanding of risk management, position sizing, and capital preservation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4 & 5. Vision and Mission -->
+    <div class="editorial-split">
+        <section class="editorial-block vision chart-bg" id="vision">
+            <div class="container reveal">
+                <div class="editorial-content">
+                    <div class="quote-mark">"</div>
+                    <span class="label">Our Vision</span>
+                    <h2>To create financially aware and independent investors and traders who make decisions based on knowledge, not tips.</h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="editorial-block mission" id="mission">
+            <div class="container reveal">
+                <div class="editorial-content">
+                    <div class="quote-mark">"</div>
+                    <span class="label">Our Mission</span>
+                    <h2>To make share market education simple, affordable, and accessible so that anyone can participate in the market safely and smartly.</h2>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 6. Our Approach -->
+    <section class="approach" id="approach">
+        <div class="container">
+            <span class="label" style="color: var(--prof-blue);">The Finearn Methodology</span>
+            <h2 class="reveal">Our Approach</h2>
+            <p class="reveal">We focus strictly on education and understanding. There are no shortcuts or guaranteed outcomes in the market—only a process of continuous learning and disciplined execution.</p>
+            
+            <div class="journey-steps reveal delay-1">
+                <div class="step">
+                    <div class="step-circle">01</div>
+                    <h4>Learn</h4>
+                </div>
+                <div class="journey-connector">→</div>
+                <div class="step">
+                    <div class="step-circle">02</div>
+                    <h4>Understand</h4>
+                </div>
+                <div class="journey-connector">→</div>
+                <div class="step">
+                    <div class="step-circle">03</div>
+                    <h4>Practice</h4>
+                </div>
+                <div class="journey-connector">→</div>
+                <div class="step">
+                    <div class="step-circle">04</div>
+                    <h4>Analyze</h4>
+                </div>
+                <div class="journey-connector">→</div>
+                <div class="step">
+                    <div class="step-circle">05</div>
+                    <h4>Develop Discipline</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Our Journey Today -->
+    <section class="journey-today" id="journey-today">
+        <div class="container">
+            <div class="journey-today-content reveal">
+                <span class="label" style="color: var(--emerald);">Present Day</span>
+                <h2>Our Journey Today</h2>
+                <p>Today, Finearn has evolved from a dedicated physical institute into a comprehensive digital learning platform. While our medium of teaching has expanded to serve learners across the entirety of India, our core focus remains completely unchanged: delivering accessible, practical, and highly structured market education to anyone willing to learn the right way.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Education Disclaimer -->
+    <section class="disclaimer" id="disclaimer">
+        <div class="container reveal">
+            <div class="disclaimer-box">
+                <p><strong>Disclaimer:</strong> Finearn provides market education only and does not provide investment or trading advice. All educational content, case studies, and chart analysis are for learning purposes only. Financial markets involve risk, and past performance is not indicative of future results.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
