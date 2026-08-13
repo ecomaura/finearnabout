@@ -202,9 +202,80 @@
             margin-bottom: 8px;
         }
 
-        /* 3. What We Stand For */
-        .philosophy {
+        /* 3. Meet the Founders */
+        .founders {
             background-color: var(--off-white);
+        }
+        .founders-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .founders-header h2 {
+            font-size: 2.5rem;
+            color: var(--deep-navy);
+        }
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .founder-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid rgba(28, 63, 96, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .founder-card:hover {
+            transform: translateY(-5px);
+        }
+        .founder-image {
+            width: 100%;
+            height: 320px;
+            background-color: var(--prof-blue);
+            position: relative;
+        }
+        .founder-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Placeholder styling if image is missing */
+            font-family: var(--font-body);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .founder-info {
+            padding: 32px 24px;
+        }
+        .founder-info h3 {
+            font-size: 1.5rem;
+            color: var(--deep-navy);
+            margin-bottom: 4px;
+        }
+        .founder-role {
+            font-family: var(--font-label);
+            color: var(--emerald);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .founder-bio {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* 4. What We Stand For */
+        .philosophy {
+            background-color: var(--white);
         }
         .philosophy-header {
             text-align: center;
@@ -220,16 +291,16 @@
             gap: 30px;
         }
         .card {
-            background: var(--white);
+            background: var(--off-white);
             padding: 40px 30px;
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-bottom: 3px solid transparent;
         }
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
             border-bottom-color: var(--emerald);
         }
         .card-icon {
@@ -256,7 +327,7 @@
             font-size: 0.95rem;
         }
 
-        /* 4 & 5. Vision and Mission (Editorial) */
+        /* 5 & 6. Vision and Mission (Editorial) */
         .editorial-split {
             display: flex;
             flex-direction: column;
@@ -306,7 +377,7 @@
             pointer-events: none;
         }
 
-        /* 6. Our Approach */
+        /* 7. Our Approach */
         .approach {
             background-color: var(--white);
             text-align: center;
@@ -367,7 +438,7 @@
             font-size: 1.5rem;
         }
 
-        /* 7. Our Journey Today */
+        /* 8. Our Journey Today */
         .journey-today {
             background: var(--off-white);
         }
@@ -393,7 +464,7 @@
             margin: 0 auto;
         }
 
-        /* 8. Education Disclaimer */
+        /* 9. Education Disclaimer */
         .disclaimer {
             background-color: var(--deep-navy);
             padding: 40px 24px;
@@ -438,6 +509,7 @@
             .journey-connector { transform: rotate(90deg); margin: 10px 0; }
             
             .editorial-block { min-height: auto; padding: 80px 20px; }
+            .founder-image { height: 280px; }
         }
     </style>
 </head>
@@ -491,8 +563,45 @@
         </div>
     </section>
 
-    <!-- 3. What We Stand For -->
-    <section class="philosophy grid-bg" id="philosophy">
+    <!-- 3. Meet the Founders -->
+    <section class="founders grid-bg" id="founders">
+        <div class="container">
+            <div class="founders-header reveal">
+                <span class="label" style="color: var(--emerald);">Leadership</span>
+                <h2>Meet the Founders</h2>
+            </div>
+            <div class="founders-grid">
+                <!-- Founder 1 -->
+                <div class="founder-card reveal delay-1">
+                    <div class="founder-image">
+                        <!-- Replace src with the actual image path -->
+                        <img src="https://via.placeholder.com/400x500/1C3F60/FFFFFF?text=Founder+Photo" alt="Co-Founder Name">
+                    </div>
+                    <div class="founder-info">
+                        <h3>[Founder Name]</h3>
+                        <p class="founder-role">Co-Founder</p>
+                        <p class="founder-bio">Driven by a passion for financial literacy, he transitioned from an independent trader into a full-time educator. He specializes in market fundamentals, long-term wealth creation, and simplifying complex concepts for beginners.</p>
+                    </div>
+                </div>
+                
+                <!-- Founder 2 -->
+                <div class="founder-card reveal delay-2">
+                    <div class="founder-image">
+                        <!-- Replace src with the actual image path -->
+                        <img src="https://via.placeholder.com/400x500/1C3F60/FFFFFF?text=Founder+Photo" alt="Co-Founder Name">
+                    </div>
+                    <div class="founder-info">
+                        <h3>[Founder Name]</h3>
+                        <p class="founder-role">Co-Founder</p>
+                        <p class="founder-bio">With years of intensive screen time and technical analysis experience, he focuses on algorithmic setups, advanced price action, and instilling strict risk management and trading psychology in students.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. What We Stand For -->
+    <section class="philosophy" id="philosophy">
         <div class="container">
             <div class="philosophy-header reveal">
                 <span class="label" style="color: var(--emerald);">Our Philosophy</span>
@@ -523,7 +632,7 @@
         </div>
     </section>
 
-    <!-- 4 & 5. Vision and Mission -->
+    <!-- 5 & 6. Vision and Mission -->
     <div class="editorial-split">
         <section class="editorial-block vision chart-bg" id="vision">
             <div class="container reveal">
@@ -546,7 +655,7 @@
         </section>
     </div>
 
-    <!-- 6. Our Approach -->
+    <!-- 7. Our Approach -->
     <section class="approach" id="approach">
         <div class="container">
             <span class="label" style="color: var(--prof-blue);">The Finearn Methodology</span>
@@ -582,7 +691,7 @@
         </div>
     </section>
 
-    <!-- 7. Our Journey Today -->
+    <!-- 8. Our Journey Today -->
     <section class="journey-today" id="journey-today">
         <div class="container">
             <div class="journey-today-content reveal">
@@ -593,7 +702,7 @@
         </div>
     </section>
 
-    <!-- 8. Education Disclaimer -->
+    <!-- 9. Education Disclaimer -->
     <section class="disclaimer" id="disclaimer">
         <div class="container reveal">
             <div class="disclaimer-box">
