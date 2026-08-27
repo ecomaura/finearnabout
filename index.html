@@ -215,18 +215,12 @@
             color: var(--deep-navy);
         }
         .founders-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-@media (max-width: 900px) {
-    .founders-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-}
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
         .founder-card {
             background: var(--white);
             border-radius: 20px;
@@ -235,6 +229,8 @@
             border: 1px solid rgba(28, 63, 96, 0.05);
             text-align: center;
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
         .founder-card:hover {
             transform: translateY(-5px);
@@ -258,6 +254,9 @@
         }
         .founder-info {
             padding: 32px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         .founder-info h3 {
             font-size: 1.5rem;
@@ -277,6 +276,13 @@
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.6;
+        }
+
+        /* Responsive founders grid for tablets */
+        @media (max-width: 900px) {
+            .founders-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
         }
 
         /* 4. What We Stand For */
@@ -544,13 +550,13 @@
                 <div class="founder-card reveal delay-1">
                     <div class="founder-image">
                         <!-- Replace src with the actual image path -->
-                        <img src="/images/IMG-20260818-WA0045.jpg" alt="Co-Founder Name">
+                        <img src="/images/IMG-20260818-WA0045.jpg" alt="Pranav Lodh">
                     </div>
                     <div class="founder-info">
                         <h3>Pranav Lodh</h3>
                         <p class="founder-role">Co-Founder | FinEarn</p>
-                        <p class="founder-bio">MBA – Finance | NISM Certified | Financial Planner
-Expertise: Investment Planning, Financial Markets, Trading & Wealth Management.</p>
+                        <p class="founder-bio">MBA – Finance | NISM Certified | Financial Planner<br>
+                        Expertise: Investment Planning, Financial Markets, Trading & Wealth Management.</p>
                     </div>
                 </div>
                 
@@ -558,26 +564,26 @@ Expertise: Investment Planning, Financial Markets, Trading & Wealth Management.<
                 <div class="founder-card reveal delay-2">
                     <div class="founder-image">
                         <!-- Replace src with the actual image path -->
-                        <img src="/images/IMG-20260818-WA0046.jpg" alt="Co-Founder Name">
+                        <img src="/images/IMG-20260818-WA0046.jpg" alt="Prateek Kapoor">
                     </div>
                     <div class="founder-info">
                         <h3>Prateek Kapoor</h3>
-                        <p class="founder-role">Co-Founder, FinEarn | Ex-Leader at Ventura, Upstox, Stoxkart.</p>
+                        <p class="founder-role">Co-Founder, FinEarn | Ex-Leader at Ventura, Upstox, Stoxkart</p>
                         <p class="founder-bio">Expert in Financial Markets, Sales Strategy & Investor Education. Building FinEarn to make stock market learning simple & practical.</p>
                     </div>
                 </div>
 
-                <!-- Founder 2 -->
-                <div class="founder-card reveal delay-2">
+                <!-- Founder 3 -->
+                <div class="founder-card reveal delay-3">
                     <div class="founder-image">
                         <!-- Replace src with the actual image path -->
-                        <img src="/images/IMG-20260818-WA0051.jpg" alt="Co-Founder Name">
+                        <img src="/images/IMG-20260818-WA0051.jpg" alt="Nitesh Dhane">
                     </div>
                     <div class="founder-info">
                         <h3>Nitesh Dhane</h3>
                         <p class="founder-role">Co-Founder | FinEarn</p>
-                        <p class="Education - B.Sc. IT.        
- Expertise : Technical Analysis • Strategy Development • Swing Trading • Derivatives • Market Analysis • Trading Strategies</p>
+                        <p class="founder-bio">Education: B.Sc. IT<br>
+                        Expertise: Technical Analysis • Strategy Development • Swing Trading • Derivatives • Market Analysis • Trading Strategies</p>
                     </div>
                 </div>
             </div>
