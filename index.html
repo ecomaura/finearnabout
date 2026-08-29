@@ -701,10 +701,13 @@
     <!-- inside your GitHub Pages site -->
 <script>
   function sendHeight() {
-    parent.postMessage({ height: document.body.scrollHeight }, '*');
-  }
-  window.addEventListener('load', sendHeight);
-  window.addEventListener('resize', sendHeight);
+    const h = document.body.scrollHeight;
+    console.log('sendHeight fired, height =', h);
+    parent.postMessage({ height: h }, '*');
+}
+window.addEventListener('load', sendHeight);
+window.addEventListener('resize', sendHeight);
+setTimeout(sendHeight, 500);
 </script>
 </body>
 </html>
